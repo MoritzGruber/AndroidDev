@@ -39,6 +39,7 @@ public class FunFactsActivity extends Activity {
         showFactButton.setOnClickListener(listener);
         //a popup on the bottom of the screen
         Toast.makeText(this, "Yay! Our Activity was created!", Toast.LENGTH_LONG).show();
+        //this is just for debugging
     }
 }
 
