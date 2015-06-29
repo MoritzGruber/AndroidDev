@@ -2,18 +2,18 @@ package com.teamtreehouse.funfacts;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class FunFactsActivity extends Activity {
 
     private FactBook mFactBook = new FactBook();
     private ColorWheel mColorWheel = new ColorWheel();
-
+    private static final String TAG= FunFactsActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +38,11 @@ public class FunFactsActivity extends Activity {
         };
         showFactButton.setOnClickListener(listener);
         //a popup on the bottom of the screen
-        Toast.makeText(this, "Yay! Our Activity was created!", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Yay! Our Activity was created!", Toast.LENGTH_LONG).show();
         //this is just for debugging
+
+        Log.d(TAG, "We are logging from the onCreate method");
+
     }
 }
 

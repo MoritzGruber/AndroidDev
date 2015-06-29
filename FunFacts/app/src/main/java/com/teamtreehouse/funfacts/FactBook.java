@@ -1,11 +1,15 @@
 package com.teamtreehouse.funfacts;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Random;
 
 /**
  * Created by benjakuben on 7/31/14.
  */
 public class FactBook {
+    private static final String TAG = FactBook.class.getSimpleName();
 
     // Member variable (properties about the object)
     public String[] mFacts = {
@@ -18,7 +22,8 @@ public class FactBook {
             "The state of Florida is bigger than England.",
             "Some penguins can leap 2-3 meters out of the water.",
             "On average, it takes 66 days to form a new habit.",
-            "Mammoths still walked the earth when the Great Pyramid was being built." };
+            "Mammoths still walked the earth when the Great Pyramid was being built."};
+    private String mFilename;
 
     // Method (abilities: things the object can do)
     public String getFact() {
@@ -27,10 +32,25 @@ public class FactBook {
 
         // Randomly select a fact
         Random randomGenerator = new Random();  // Construct a new Random number generator
-        int randomNumber = randomGenerator.nextInt(mFacts.length);
+        int randomNumber = randomGenerator.nextInt(99) + 1;
 
-        fact = mFacts[randomNumber];
+            try {
+                FileReader fr = new FileReader("glaubensaetze.txt");
+                BufferedReader br = new BufferedReader(fr);
 
-        return fact;
+                String zeile = "";
+
+                while( (zeile = br.readLine()) != null )
+                {
+                    System.out.println(zeile);
+                }
+
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return fact;
+
     }
 }
