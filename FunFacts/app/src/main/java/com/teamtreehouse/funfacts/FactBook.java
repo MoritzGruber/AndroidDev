@@ -1,8 +1,6 @@
 package com.teamtreehouse.funfacts;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
 import java.util.Random;
 
 /**
@@ -32,23 +30,8 @@ public class FactBook {
 
         // Randomly select a fact
         Random randomGenerator = new Random();  // Construct a new Random number generator
-        int randomNumber = randomGenerator.nextInt(99) + 1;
-
-            try {
-                FileReader fr = new FileReader("glaubensaetze.txt");
-                BufferedReader br = new BufferedReader(fr);
-
-                String zeile = "";
-
-                while( (zeile = br.readLine()) != null )
-                {
-                    System.out.println(zeile);
-                }
-
-                br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        int randomNumber = randomGenerator.nextInt(mFacts.length);
+        fact = mFacts[randomNumber];
 
             return fact;
 
