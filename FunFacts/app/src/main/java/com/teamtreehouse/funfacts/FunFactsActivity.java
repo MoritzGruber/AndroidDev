@@ -1,24 +1,34 @@
 package com.teamtreehouse.funfacts;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.teamtreehouse.funfacts.GenerateSentnce.getSentence;
 
 
 public class FunFactsActivity extends Activity {
 
-    public InputStream minputStream=null;
-    private FactBook mFactBook = new FactBook();
+    public String[] mSentence=null;
+    private InputStream minputStream=null;
+    private GenerateSentnce mFactBook = new GenerateSentnce();
     private ColorWheel mColorWheel = new ColorWheel();
     private static final String TAG= FunFactsActivity.class.getSimpleName();
+
+
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +38,17 @@ public class FunFactsActivity extends Activity {
         final TextView factLabel = (TextView) findViewById(R.id.factTextView);
         final Button showFactButton = (Button) findViewById(R.id.showFactButton);
         final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
-        String result="default";
-
-
-
 
         try {
             minputStream=getAssets().open("text.txt");
-            java.util.Scanner s = new java.util.Scanner(minputStream).useDelimiter("\\A");
-            result= s.hasNext() ? s.next() : "";
+            java.util.Scanner s = new java.util.Scanner(minputStream, "iso-8859-1").useDelimiter("\\A");
+            //result= s.hasNext() ? s.next() : "";
+            List<String> lines = new ArrayList<String>();
+            while (s.hasNextLine()) {
+                lines.add(s.nextLine());
+            }
+
+            mSentence = lines.toArray(new String[0]);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,7 +70,7 @@ public class FunFactsActivity extends Activity {
 
                 @Override
                 public void onClick(View view) {
-                    String fact = mFactBook.getFact();
+                    String fact = getSentence(mSentence);
                     // Update the label with our dynamic fact
                     factLabel.setText(fact);
 
@@ -70,7 +82,10 @@ public class FunFactsActivity extends Activity {
 
         showFactButton.setOnClickListener(listener);
         //a popup on the bottom of the screen
-        Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+//        String enc = Charset.defaultCharset().displayName()
+//        Toast.makeText(this, enc, Toast.LENGTH_LONG).show();
+
+
         //this is just for debugging
 
         Log.d(TAG, "We are logging from the onCreate method");
