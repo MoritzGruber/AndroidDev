@@ -1,4 +1,4 @@
-package ss2013;
+package ss2013.a1;
 
 import java.util.Arrays;
 
