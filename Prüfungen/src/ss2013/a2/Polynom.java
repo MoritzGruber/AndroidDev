@@ -7,8 +7,20 @@ public class Polynom {
 
     String mResult="";
     public Polynom(int[] ia) {
+        for (int i = 0; i < ia.length; i++) {
+            if(ia[i] ==0)continue;
+            if(ia[i]<0 && i!=0){
+                ia[i]=ia[i]*-1;
+                mResult=mResult+" - ";}else if(ia[i]>0 &&i!=0){
+                mResult=mResult+" + ";
+            }
+            if(i==ia.length-2)mResult=mResult+ia[i]+"x";
+            if(i==ia.length-1)mResult=mResult+ia[i];
+            if(i<ia.length-2)mResult=mResult+ia[i]+"x^"+(ia.length-i-1);
 
-         mResult=berechen(ia);
+        }
+
+//         mResult=berechen(ia);
     }
 
     @Override

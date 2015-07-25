@@ -1,19 +1,10 @@
 package ss2013.a3;
 
 /**
- * Created by Unantastbar on 04.07.2015.
+ * Created by Unantastbar on 15.07.2015.
  */
-public class Mond implements Comparable<Mond>{
-    String mName="";
-    long mDurchmesser=0;
-
-    public Mond(String name, long durchmesser) {
-        mName = name;
-        mDurchmesser = durchmesser;
-    }
-
-    @Override
-    public int compareTo(Mond m) {
-        return (int)(m.mDurchmesser-this.mDurchmesser);
+public class Mond extends HK {
+    public Mond(String s, int i){
+        super(s,i);
     }
 }
