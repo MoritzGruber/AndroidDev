@@ -36,7 +36,8 @@
             android:name=".EditFriendsActivity"
             android:label="@string/title_activity_edit_freinds"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moritzgruber.ribbit.MainActivity" />

@@ -94,7 +94,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         if (itemId == R.id.action_logout) {
             ParseUser.logOut();
             navigateToLogin();
-        } else if (itemId == R.id.action_logout) {
+        } else if (itemId == R.id.action_edit_friends) {
             Intent intent = new Intent(this, EditFriendsActivity.class);
             startActivity(intent);
         }
