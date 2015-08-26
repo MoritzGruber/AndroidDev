@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="com.moritzgruber.ribbit.RecipientsActivity">
+
+    <item android:id="@+id/action_send"
+        android:visible="false"
+        android:icon="@mipmap/ic_action_send_now"
+        app:showAsAction="always"
+        android:title="@string/menu_send_label"/>
+</menu>

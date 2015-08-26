@@ -28,6 +28,7 @@ public class EditFriendsActivity extends ListActivity {
 
         //setupActionBar();
 
+
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
     }
@@ -112,9 +113,6 @@ public class EditFriendsActivity extends ListActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -27,7 +27,6 @@ public class FriendsFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
-
         return rootView;
     }
 
@@ -51,26 +50,26 @@ public class FriendsFragment extends ListFragment {
                     mFriends = friends;
 
 
-                    String[] usernames = new String[mFriends.size()];
-                    int i = 0;
-                    for (ParseUser user : mFriends) {
-                        usernames[i] = user.getUsername();
-                        i++;
+                String[] usernames = new String[mFriends.size()];
+                int i = 0;
+                for (ParseUser user : mFriends) {
+                    usernames[i] = user.getUsername();
+                    i++;
 
-                    }
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            getListView().getContext(), android.R.layout.simple_list_item_1, usernames);
-                    setListAdapter(adapter);
-                } else {
-                    Log.e(TAG, e.getMessage());
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getListView().getContext());
-                    builder.setMessage(e.getMessage())
-                            .setTitle(R.string.error_title)
-                            .setPositiveButton(android.R.string.ok, null);
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
                 }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                        getListView().getContext(), android.R.layout.simple_list_item_1, usernames);
+                setListAdapter(adapter);
+            } else {
+                Log.e(TAG, e.getMessage());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getListView().getContext());
+                builder.setMessage(e.getMessage())
+                        .setTitle(R.string.error_title)
+                        .setPositiveButton(android.R.string.ok, null);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
             }
         });
     }

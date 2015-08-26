@@ -3,8 +3,8 @@ package com.moritzgruber.ribbit;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -26,6 +26,11 @@ public class SignUpActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         mUsername = (EditText) findViewById(R.id.usernameField);
         mPassword = (EditText) findViewById(R.id.passwordField);
@@ -87,10 +92,4 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sign_up, menu);
-        return true;
-    }
 }
